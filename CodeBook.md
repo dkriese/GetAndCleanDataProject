@@ -13,42 +13,37 @@ Coursera Getting and Cleaning Data project using a publicly available dataset
 ##Study design and data processing
  
 ###Collection of the raw data
-This data was obtained at: 
+This data was obtained at: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
  
 ###Notes on the original (raw) data 
 From the original dataset README.txt:
+- Features are normalized and bounded within [-1,1].
+- Each feature vector is a row on the text file.
 
+For more information about this dataset contact: activityrecognition@smartlab.ws
  
 ##Creating the tidy datafile
  
 ###Guide to create the tidy data file
-Description on how to create the tidy data file (1. download the data, ...)/
+1. download the data
+2. place the run_analysis.R script in the same directory as the unzipped folder of the downloaded data
+3. install dplyr and tidyr packages
+4. run the script (type run_analysis.R in command line R)
  
 ###Cleaning of the data
-The cleaning script reads in the training data set, the testing dataset, appends the test set to the training set, and then subsets by selecting only the columns that incude "mean" or "std" in the column name. It also adds columns to identify the subject tested (numerically) and activity being tested. [http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.names]()
+The cleaning script reads in the training data set, the testing dataset, appends the test set to the training set, and then subsets by selecting only the columns that incude "mean" or "std" in the column name. Then it transforms the feature columns into two columns, feature and measurement. Columns are prepended to identify the subject tested (numerically) and activity being tested. The activity codes are replaced with activity names. The final set summarized the data by subjectid and activity and includes the calculated average and standard deviation for each feature. [http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.names]()
  
 ##Description of the variables in the tiny_data.txt file
 General description of the file including:
  - Dimensions of the dataset - 14220 X 5
  - Summary of the data
- - Variables present in the dataset
+ - Variables present in the dataset - subjectid, activity, feature, average, standarddev
  
 (you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
  
 ###subjectid
 This is a numeric id that maps to one of the 30 subjects in the test.
  
-Some information on the variable including:
- - Class of the variable
- - Unique values/levels of the variable
- - Unit of measurement (if no unit of measurement list this as well)
- - In case names follow some schema, describe how entries were constructed (for example time-body-gyroscope-z has 4 levels of descriptors. Describe these 4 levels). 
- 
-(you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
- 
-####Notes on variable 1:
-If available, some additional notes on the variable not covered elsewehere. If no notes are present leave this section out.
-
 ###activity
 This is the string description of the activity the subjects were taking part in when the measurement was taken. Unique values are: walking, walkingupstairs, walkingdownstairs, sitting, standing, and laying
 
